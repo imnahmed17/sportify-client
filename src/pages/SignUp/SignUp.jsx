@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { loading, createUser } = useContext(AuthContext);
+    const { loading, createUser, updateUserProfile } = useContext(AuthContext);
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -25,9 +25,15 @@ const SignUp = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                toast.success("User Created!");
-                reset();
-                navigate(from, { replace: true });
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        toast.success("User Created!");
+                        reset();
+                        navigate(from, { replace: true });
+                    })
+                    .catch((err) => {
+                        toast.error(err.message);
+                    });
             })
             .catch((err) => {
                 toast.error(err.message);
