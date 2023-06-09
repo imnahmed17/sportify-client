@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { loading, createUser, updateUserProfile } = useContext(AuthContext);
+    const { loading, createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,7 +28,7 @@ const SignUp = () => {
                 console.log(loggedUser);
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        saveUser(loggedUser);
+                        saveUser(result.user);
                         toast.success("User Created!");
                         navigate(from, { replace: true });
                         reset();
@@ -37,6 +37,19 @@ const SignUp = () => {
                         console.log(err.message);
                         toast.error(err.message);
                     });
+            });
+    };
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then((result) => {
+                console.log(result.user);
+                saveUser(result.user);
+                navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                console.log(err.message);
+                toast.error(err.message);
             });
     };
 
@@ -107,7 +120,7 @@ const SignUp = () => {
                         <p className="px-3 text-sm dark:text-gray-400">Signup with social accounts</p>
                         <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
                     </div>
-                    <div  className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 hover:border-indigo-500 border-rounded cursor-pointer">
+                    <div onClick={handleGoogleSignIn} className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 hover:border-indigo-500 border-rounded cursor-pointer">
                         <FcGoogle size={32} />
                         <p>Continue with Google</p>
                     </div>
