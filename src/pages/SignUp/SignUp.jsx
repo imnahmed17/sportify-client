@@ -27,12 +27,12 @@ const SignUp = () => {
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 ng-untouched ng-pristine ng-valid">
                         <div className="space-y-4">
                             <div>
-                                <label htmlFor="email" className="block mb-2 text-sm">Name</label>
+                                <label htmlFor="name" className="block mb-2 text-sm">Name</label>
                                 <input type="text" {...register("name", { required: true })} name="name" id="name" placeholder="Enter Your Name Here" className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-indigo-500 bg-gray-200 text-gray-900" data-temp-mail-org="0" />
                                 {errors.name && <span className="text-red-600">Name is required</span>}
                             </div>
                             <div>
-                                <label htmlFor="image" className="block mb-2 text-sm">Photo URL:</label>
+                                <label htmlFor="photoURL" className="block mb-2 text-sm">Photo URL:</label>
                                 <input type="text" {...register("photoURL", { required: true })} name="photoURL" id="photoURL" placeholder="Enter Your Photo URL Here" className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-indigo-500 bg-gray-200 text-gray-900" data-temp-mail-org="0" />
                                 {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
                             </div>
