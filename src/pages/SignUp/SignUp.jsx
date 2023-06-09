@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { ImSpinner10 } from 'react-icons/im';
 import { AuthContext } from '../../providers/AuthProvider';
+import { saveUser } from '../../api/auth';
 import toast from 'react-hot-toast';
 
 const SignUp = () => {
@@ -27,16 +28,15 @@ const SignUp = () => {
                 console.log(loggedUser);
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
+                        saveUser(loggedUser);
                         toast.success("User Created!");
-                        reset();
                         navigate(from, { replace: true });
+                        reset();
                     })
                     .catch((err) => {
+                        console.log(err.message);
                         toast.error(err.message);
                     });
-            })
-            .catch((err) => {
-                toast.error(err.message);
             });
     };
 
