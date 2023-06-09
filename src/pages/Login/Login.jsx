@@ -14,7 +14,9 @@ const Login = () => {
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
+    const saveAddress = localStorage.getItem('address') || '/';
+    const from = location.state?.from?.pathname || saveAddress;
+    localStorage.setItem('address', from);
 
     const onSubmit = data => {
         signIn(data.email, data.password)

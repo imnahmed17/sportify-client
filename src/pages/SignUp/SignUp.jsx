@@ -10,11 +10,13 @@ import toast from 'react-hot-toast';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { loading, createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
+    const { loading, createUser, updateUserProfile, googleSignIn, logOut } = useContext(AuthContext);
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
+    const saveAddress = localStorage.getItem('address') || '/';
+    const from = location.state?.from?.pathname || saveAddress;
+    localStorage.setItem('address', from);
 
     const onSubmit = data => {
         if (data.password !== data.confirmPassword) {
@@ -30,8 +32,8 @@ const SignUp = () => {
                     .then(() => {
                         saveUser(result.user);
                         toast.success("User Created!");
-                        navigate(from, { replace: true });
                         reset();
+                        logOut();
                     })
                     .catch((err) => {
                         console.log(err.message);
