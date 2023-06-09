@@ -1,16 +1,37 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { ImSpinner10 } from 'react-icons/im';
+import { AuthContext } from '../../providers/AuthProvider';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { loading, createUser } = useContext(AuthContext);
     const [show, setShow] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const onSubmit = data => {
-        console.log(data.name, data.email, data.confirmPassword)
+        if (data.password !== data.confirmPassword) {
+            toast.error('Password did not match');
+            return;
+        }
+
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                toast.success("User Created!");
+                reset();
+                navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                toast.error(err.message);
+            });
     };
 
     return (
@@ -71,7 +92,7 @@ const SignUp = () => {
                         </div>
                         <div>
                             <button type="submit" className="bg-indigo-500 w-full rounded-md py-3 text-white">
-                                {/* {loading ? <ImSpinner10 className="m-auto animate-spin" size={24} /> : "Continue"} */} Sign Up
+                                {loading ? <ImSpinner10 className="m-auto animate-spin" size={24} /> : "Sign Up"} 
                             </button>
                         </div>
                     </form>

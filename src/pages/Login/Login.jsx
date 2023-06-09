@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { ImSpinner10 } from 'react-icons/im';
+import toast from "react-hot-toast";
 
 const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
