@@ -45,6 +45,7 @@ const SignUp = () => {
             .then((result) => {
                 console.log(result.user);
                 saveUser(result.user);
+                toast.success("Welcome Back!");
                 navigate(from, { replace: true });
             })
             .catch((err) => {

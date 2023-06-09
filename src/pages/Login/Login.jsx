@@ -1,17 +1,48 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { ImSpinner10 } from 'react-icons/im';
-import toast from "react-hot-toast";
+import { AuthContext } from '../../providers/AuthProvider';
+import { saveUser } from '../../api/auth';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { loading, googleSignIn, signIn } = useContext(AuthContext);
     const [show, setShow] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const onSubmit = data => {
-        console.log(data.email, data.password)
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success("Welcome Back!");
+                navigate(from, { replace: true });
+                reset();
+            })
+            .catch(err => {
+                console.log(err.message);
+                toast.error(err.message);
+            });
+    };
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                console.log(result.user);
+                saveUser(result.user);
+                toast.success("Welcome Back!");
+                navigate(from, { replace: true });
+            })
+            .catch(err => {
+                console.log(err.message);
+                toast.error(err.message);
+            });
     };
 
     return (
@@ -45,7 +76,7 @@ const Login = () => {
                         </div>
                         <div>
                             <button type="submit" className="bg-indigo-500 w-full rounded-md py-3 text-white">
-                                {/* {loading ? <ImSpinner10 className="m-auto animate-spin" size={24} /> : "Continue"} */} Login
+                                {loading ? <ImSpinner10 className="m-auto animate-spin" size={24} /> : "Login"} 
                             </button>
                         </div>
                     </form>
@@ -54,7 +85,7 @@ const Login = () => {
                         <p className="px-3 text-sm dark:text-gray-400">Login with social accounts</p>
                         <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
                     </div>
-                    <div className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 hover:border-indigo-500 border-rounded cursor-pointer">
+                    <div onClick={handleGoogleSignIn} className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 hover:border-indigo-500 border-rounded cursor-pointer">
                         <FcGoogle size={32} />
                         <p>Continue with Google</p>
                     </div>
