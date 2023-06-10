@@ -1,0 +1,9 @@
+.navbar-end a {
+    @apply font-semibold tracking-wide btn-ghost border-0 text-gray-700 transition-colors duration-200 
+}
+.navbar-end a.active {
+    @apply font-semibold tracking-wide bg-transparent border-0 text-indigo-500 transition-colors duration-200 
+}
+.navbar-end a:hover {
+    @apply  hover:text-blue-400 hover:bg-base-200
+}
