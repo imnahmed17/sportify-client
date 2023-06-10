@@ -1,18 +1,21 @@
 import { useContext, useState } from 'react';
 import { AiOutlineBars } from 'react-icons/ai';
 import { IoFlash } from 'react-icons/io5';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
-import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaUtensils, FaBook, FaUsers, FaChalkboardTeacher } from 'react-icons/fa';
 import { GrLogout } from 'react-icons/gr';
-import { MdHomeWork, MdOutlineManageHistory } from "react-icons/md";
 import CommonMenu from './CommonMenu';
+import AdminMenu from './AdminMenu';
+import InstructorMenu from './InstructorMenu';
+import StudentMenu from './StudentMenu';
 
 const Sidebar = () => {
     const { user, logOut } = useContext(AuthContext);
-    const [toggle, setToggle] = useState(false);
+    // const [toggle, setToggle] = useState(false);
     const [isActive, setActive] = useState('false');
     const navigate = useNavigate();
+    const isAdmin = true;
+    const isInstructor = false;
 
     const handleToggle = () => {
         setActive(!isActive);
@@ -74,6 +77,17 @@ const Sidebar = () => {
                     {/* Nav Items */}
                     <div className='flex flex-col justify-between flex-1 mt-6'>
                         <nav>
+                            {
+                                isAdmin ? (
+                                    <AdminMenu />
+                                ) : (
+                                    isInstructor ? (
+                                        <InstructorMenu />
+                                    ) : (
+                                        <StudentMenu />
+                                    )
+                                )
+                            }
                             <div className="divider"></div>
                             <CommonMenu />
                         </nav>

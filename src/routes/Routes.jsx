@@ -35,5 +35,22 @@ export const router = createBrowserRouter([
     {
         path: 'dashboard',
         element: <DashboardLayout />, 
+        children: [
+            // student 
+            {
+                path: 'selected-class'
+            },
+            {
+                path: 'enrolled-class'
+            },
+            // instructor 
+            {
+                path: 'add-class'
+            },
+            {
+                path: 'my-class'
+            },
+            // admin 
+        ]
     }
 ]);

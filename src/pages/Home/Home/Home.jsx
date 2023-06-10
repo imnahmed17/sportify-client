@@ -7,7 +7,7 @@ const Home = () => {
             <Helmet>
                 <title>Sportify | Home</title>
             </Helmet>
-            <Banner />
+            {/* <Banner /> */}
         </div>
     );
 };
