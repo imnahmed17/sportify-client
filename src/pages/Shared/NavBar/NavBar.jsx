@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { IoFlash } from 'react-icons/io5';
+import useAdmin from '../../../hooks/useAdmin';
 import './NavBar.css';
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
 
     const handleLogOut = () => {
         logOut()
@@ -30,19 +32,26 @@ const NavBar = () => {
             </NavLink>
         </li>
         {
-            user ? <>
+            isAdmin ? <>
                 <li>
-                    <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                    <NavLink to="/dashboard/manage-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
                         Dashboard
                     </NavLink>
                 </li>
             </> : <>
                 <li>
-                    <NavLink to="/login" className={({ isActive }) => (isActive ? 'active' : 'default')}>
-                        Login
+                    <NavLink to="/dashboard/selected-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                        Dashboard
                     </NavLink>
                 </li>
             </>
+        }
+        {
+            !user && <li>
+                <NavLink to="/login" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                    Login
+                </NavLink>
+            </li>
         }
     </>
 

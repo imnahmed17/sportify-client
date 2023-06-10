@@ -6,6 +6,9 @@ import SignUp from '../pages/SignUp/SignUp';
 import DashboardLayout from '../layouts/DashboardLayout';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import ManageUser from '../pages/Dashboard/ManageUser/ManageUser';
+import ManageClass from '../pages/Dashboard/ManageClass/ManageClass';
+import SelectedClass from '../pages/Dashboard/SelectedClass/SelectedClass';
+import PrivateRoute from './PrivateRoute';
 
 export const router = createBrowserRouter([
     {
@@ -35,11 +38,12 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <DashboardLayout />, 
+        element: <PrivateRoute><DashboardLayout /></PrivateRoute>, 
         children: [
             // student 
             {
-                path: 'selected-class'
+                path: 'selected-class',
+                element: <SelectedClass />
             },
             {
                 path: 'enrolled-class'
@@ -53,7 +57,8 @@ export const router = createBrowserRouter([
             },
             // admin 
             {
-                path: 'manage-class'
+                path: 'manage-class',
+                element: <ManageClass />
             },
             {
                 path: 'manage-user',
