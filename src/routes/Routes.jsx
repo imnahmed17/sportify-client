@@ -5,6 +5,7 @@ import Login from '../pages/Login/Login';
 import SignUp from '../pages/SignUp/SignUp';
 import DashboardLayout from '../layouts/DashboardLayout';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
+import ManageUser from '../pages/Dashboard/ManageUser/ManageUser';
 
 export const router = createBrowserRouter([
     {
@@ -51,6 +52,13 @@ export const router = createBrowserRouter([
                 path: 'my-class'
             },
             // admin 
+            {
+                path: 'manage-class'
+            },
+            {
+                path: 'manage-user',
+                element: <ManageUser />
+            },
         ]
     }
 ]);
