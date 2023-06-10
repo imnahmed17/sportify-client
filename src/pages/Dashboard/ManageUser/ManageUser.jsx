@@ -25,17 +25,17 @@ const ManageUser = () => {
     };
 
     const handleMakeInstructor = user => {
-        // makeInstructor(user)
-        //     .then((data) => {
-        //         if (data.modifiedCount) {
-        //             refetch();
-        //             toast.success(`${user.name} is an Instructor Now!`);
-        //         }
-        //     })
-        //     .catch((err) => {
-        //         console.log(err.message);
-        //         toast.error(err.message);
-        //     });
+        makeInstructor(user)
+            .then((data) => {
+                if (data.modifiedCount) {
+                    refetch();
+                    toast.success(`${user.name} is an Instructor Now!`);
+                }
+            })
+            .catch((err) => {
+                console.log(err.message);
+                toast.error(err.message);
+            });
     };
 
     return (
