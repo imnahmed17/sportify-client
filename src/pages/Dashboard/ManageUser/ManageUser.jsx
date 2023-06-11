@@ -2,8 +2,8 @@ import { Helmet } from "react-helmet-async";
 import { useQuery } from "@tanstack/react-query";
 import { makeAdmin, makeInstructor } from "../../../api/auth";
 import UserDataRow from "./UserDataRow";
-import toast from "react-hot-toast";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const ManageUser = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -51,8 +51,8 @@ const ManageUser = () => {
                     <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                         <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
                             <table className="min-w-full leading-normal">
-                                <thead >
-                                    <tr className="">
+                                <thead>
+                                    <tr>
                                         <th scope="col" className="px-5 py-3 bg-indigo-800 border-b border-gray-200 text-white 
                                         text-left text-sm uppercase font-semibold">
                                             #
@@ -67,7 +67,7 @@ const ManageUser = () => {
                                         </th>
                                         <th scope="col" className="px-5 py-3 bg-indigo-800 border-b border-gray-200 text-white 
                                         text-center text-sm uppercase font-semibold">
-                                            Role {users.length}
+                                            Role
                                         </th>
                                     </tr>
                                 </thead>
