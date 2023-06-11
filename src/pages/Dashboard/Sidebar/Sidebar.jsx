@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { AiOutlineBars } from 'react-icons/ai';
 import { IoFlash } from 'react-icons/io5';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { GrLogout } from 'react-icons/gr';
 import CommonMenu from './CommonMenu';
@@ -16,7 +16,6 @@ const Sidebar = () => {
     const [isActive, setActive] = useState('false');
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    const navigate = useNavigate();
 
     const handleToggle = () => {
         setActive(!isActive);
@@ -24,10 +23,8 @@ const Sidebar = () => {
 
     const handleLogOut = () => {
         logOut() 
-            .then(() => {})
+            .then(() => { })
             .catch(error => console.log(error));
-            
-        navigate('/');
     };
 
     return (
