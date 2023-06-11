@@ -9,13 +9,14 @@ import AdminMenu from './AdminMenu';
 import InstructorMenu from './InstructorMenu';
 import StudentMenu from './StudentMenu';
 import useAdmin from '../../../hooks/useAdmin';
+import useInstructor from '../../../hooks/useInstructor';
 
 const Sidebar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isActive, setActive] = useState('false');
-    const navigate = useNavigate();
     const [isAdmin] = useAdmin();
-    const isInstructor = false;
+    const [isInstructor] = useInstructor();
+    const navigate = useNavigate();
 
     const handleToggle = () => {
         setActive(!isActive);

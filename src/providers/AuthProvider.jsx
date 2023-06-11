@@ -43,7 +43,6 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             console.log('current user', currentUser);
-            setLoading(false);
 
             // get and set token
             if (currentUser) {
@@ -51,6 +50,7 @@ const AuthProvider = ({ children }) => {
                     email: currentUser.email
                 })
                     .then(data => {
+                        setLoading(false);
                         localStorage.setItem('access-token', data.data.token);
                     });
             }
@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
         };
     }, []);
 
-    const authInfo = { user, loading, setLoading, createUser, updateUserProfile, googleSignIn, signIn, logOut };
+    const authInfo = { user, loading, createUser, updateUserProfile, googleSignIn, signIn, logOut };
 
     return (
         <AuthContext.Provider value={authInfo}>

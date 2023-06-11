@@ -3,11 +3,13 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { IoFlash } from 'react-icons/io5';
 import useAdmin from '../../../hooks/useAdmin';
+import useInstructor from '../../../hooks/useInstructor';
 import './NavBar.css';
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     const handleLogOut = () => {
         logOut()
@@ -32,19 +34,28 @@ const NavBar = () => {
             </NavLink>
         </li>
         {
-            isAdmin ? <>
+            isAdmin ? (
                 <li>
                     <NavLink to="/dashboard/manage-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
                         Dashboard
                     </NavLink>
                 </li>
-            </> : <>
-                <li>
-                    <NavLink to="/dashboard/selected-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
-                        Dashboard
-                    </NavLink>
-                </li>
-            </>
+            ) : (
+                isInstructor ? (
+                    <li>
+                        <NavLink to="/dashboard/add-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                            Dashboard
+                        </NavLink>
+                    </li>
+                ) : (
+                    <li>
+                        <NavLink to="/dashboard/selected-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                            Dashboard
+                        </NavLink>
+                    </li>
+                )
+                
+            )
         }
         {
             !user && <li>
