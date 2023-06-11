@@ -1,13 +1,12 @@
-import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { AuthContext } from '../../../providers/AuthProvider';
 import { IoFlash } from 'react-icons/io5';
+import useAuth from '../../../hooks/useAuth';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
 import './NavBar.css';
 
 const NavBar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useAuth();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
 
@@ -34,35 +33,36 @@ const NavBar = () => {
             </NavLink>
         </li>
         {
-            isAdmin ? (
-                <li>
-                    <NavLink to="/dashboard/manage-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
-                        Dashboard
-                    </NavLink>
-                </li>
-            ) : (
-                isInstructor ? (
+            user ? (
+                isAdmin ? (
                     <li>
-                        <NavLink to="/dashboard/add-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                        <NavLink to="/dashboard/manage-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
                             Dashboard
                         </NavLink>
                     </li>
                 ) : (
-                    <li>
-                        <NavLink to="/dashboard/selected-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
-                            Dashboard
-                        </NavLink>
-                    </li>
+                    isInstructor ? (
+                        <li>
+                            <NavLink to="/dashboard/add-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                                Dashboard
+                            </NavLink>
+                        </li>
+                    ) : (
+                        <li>
+                            <NavLink to="/dashboard/selected-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                                Dashboard
+                            </NavLink>
+                        </li>
+                    )
+                    
                 )
-                
+            ) : (
+                <li>
+                    <NavLink to="/login" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                        Login
+                    </NavLink>
+                </li>
             )
-        }
-        {
-            !user && <li>
-                <NavLink to="/login" className={({ isActive }) => (isActive ? 'active' : 'default')}>
-                    Login
-                </NavLink>
-            </li>
         }
     </>
 

@@ -20,7 +20,7 @@ const Footer = () => {
                     <a className="link link-hover">Physical assessments</a> 
                     <a className="link link-hover">Nutrition and wellness</a>
                 </div> 
-                <div>
+                <div className='lg:hidden'>
                     <span className="footer-title">Company</span> 
                     <a className="link link-hover">About us</a> 
                     <a className="link link-hover">Jobs</a> 
@@ -39,6 +39,18 @@ const Footer = () => {
                     <a className="link link-hover">123 South Lane, East Berne</a> 
                     <a className="link link-hover">555-555-5555</a>
                     <a className="link link-hover">info@sportify.com</a>
+                </div>
+                <div className='md:hidden lg:block'>
+                    <span className="footer-title">Newsletter</span> 
+                    <div className="form-control w-80">
+                        <label className="label">
+                            <span className="label-text">Enter your email address</span>
+                        </label> 
+                        <div className="relative">
+                            <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" /> 
+                            <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
+                        </div>
+                    </div>
                 </div>
             </footer>
             <footer className="footer footer-center p-4 border-t bg-base-200 text-base-content border-base-300">
