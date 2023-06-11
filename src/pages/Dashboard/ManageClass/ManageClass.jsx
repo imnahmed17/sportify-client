@@ -1,15 +1,46 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import ClassDataRow from './ClassDataRow';
+import FeedbackModal from './FeedbackModal';
+import toast from 'react-hot-toast';
 
 const ManageClass = () => {
     const [axiosSecure] = useAxiosSecure();
+    const [singleClassData, setSingleClassData] = useState({});
+    const [temp, setTemp] = useState(0);
 
     const { data: classes = [], refetch } = useQuery(['users'], async () => {
         const res = await axiosSecure.get('/classes');
         return res.data;
     });
+
+    const handleApproved = (classData, feedback) => {
+        const document = { status: 'approved', feedback };
+
+        axiosSecure.patch(`/classes/feedback/${classData._id}`, document)
+            .then(data => {
+                console.log(data.data);
+                if (data.data.modifiedCount) {
+                    refetch();
+                    toast.success(`${classData.className} class is approved!`);
+                }
+            });
+    };
+
+    const handleDenied = (classData, feedback) => {
+        const document = { status: 'denied', feedback };
+
+        axiosSecure.patch(`/classes/feedback/${classData._id}`, document)
+            .then(data => {
+                console.log(data.data);
+                if (data.data.modifiedCount) {
+                    refetch();
+                    toast.success(`${classData.className} class is denied!`);
+                }
+            });
+    };
 
     return (
         <>
@@ -67,10 +98,18 @@ const ManageClass = () => {
                                             key={classData._id}
                                             classData={classData}
                                             index={index} 
+                                            setSingleClassData={setSingleClassData}
+                                            setTemp={setTemp}
                                         />)
                                     }
                                 </tbody>
                             </table>
+                            <FeedbackModal 
+                                singleClassData={singleClassData}
+                                handleApproved={handleApproved} 
+                                handleDenied={handleDenied}
+                                temp={temp}
+                            />
                         </div>
                     </div>
                 </div>
