@@ -8,8 +8,8 @@ const CommonMenu = () => {
             <NavLink
                 to="/"
                 className={({ isActive }) =>
-                    `flex items-center px-4 py-2 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 
-                    ${isActive ? "bg-gray-300 text-gray-700" : "text-gray-600"}`
+                    `flex items-center px-4 py-2 transition-colors duration-300 transform hover:bg-indigo-200 hover:text-gray-700 
+                    ${isActive ? "bg-indigo-200 text-gray-700" : "text-gray-600"}`
                 }
             >
                 <FaHome className="w-5 h-5" />
@@ -18,8 +18,8 @@ const CommonMenu = () => {
             <NavLink
                 to="/instructors"
                 className={({ isActive }) =>
-                    `flex items-center px-4 py-2 mt-2 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 
-                    ${isActive ? "bg-gray-300 text-gray-700" : "text-gray-600"}`
+                    `flex items-center px-4 py-2 mt-2 transition-colors duration-300 transform hover:bg-indigo-200 hover:text-gray-700 
+                    ${isActive ? "bg-indigo-200 text-gray-700" : "text-gray-600"}`
                 }
             >
                 <FaChalkboardTeacher className="w-5 h-5" />
@@ -28,8 +28,8 @@ const CommonMenu = () => {
             <NavLink
                 to="/classes"
                 className={({ isActive }) =>
-                    `flex items-center px-4 py-2 mt-2 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 
-                    ${isActive ? "bg-gray-300 text-gray-700" : "text-gray-600"}`
+                    `flex items-center px-4 py-2 mt-2 transition-colors duration-300 transform hover:bg-indigo-200 hover:text-gray-700 
+                    ${isActive ? "bg-indigo-200 text-gray-700" : "text-gray-600"}`
                 }
             >
                 <RiComputerLine className="w-5 h-5" />

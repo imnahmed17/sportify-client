@@ -51,21 +51,21 @@ const ManageUser = () => {
                     <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                         <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
                             <table className="min-w-full leading-normal">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" className="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 
+                                <thead >
+                                    <tr className="">
+                                        <th scope="col" className="px-5 py-3 bg-indigo-800 border-b border-gray-200 text-white 
                                         text-left text-sm uppercase font-semibold">
                                             #
                                         </th>
-                                        <th scope="col" className="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 
+                                        <th scope="col" className="px-5 py-3 bg-indigo-800 border-b border-gray-200 text-white 
                                         text-left text-sm uppercase font-semibold">
                                             Name
                                         </th>
-                                        <th scope="col" className="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 
+                                        <th scope="col" className="px-5 py-3 bg-indigo-800 border-b border-gray-200 text-white 
                                         text-left text-sm uppercase font-semibold">
                                             Email
                                         </th>
-                                        <th scope="col" className="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 
+                                        <th scope="col" className="px-5 py-3 bg-indigo-800 border-b border-gray-200 text-white 
                                         text-center text-sm uppercase font-semibold">
                                             Role {users.length}
                                         </th>

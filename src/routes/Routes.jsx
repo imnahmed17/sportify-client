@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
             {
                 path: 'my-class'
             },
-            // admin 
+            // admin route
             {
                 path: 'manage-class',
                 element: <AdminRoute><ManageClass /></AdminRoute>
@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
             {
                 path: 'manage-user',
                 element: <AdminRoute><ManageUser /></AdminRoute>
-            },
+            }
         ]
     }
 ]);
