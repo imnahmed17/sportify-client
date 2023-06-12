@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
 import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
+import useEnrollment from "../../hooks/useEnrollment";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -15,14 +16,21 @@ const ClassCard = ({ classData }) => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     const [cart, refetch] = useCart();
+    const [enrolledClass] = useEnrollment();
     const navigate = useNavigate();
     const location = useLocation();
 
     const handleAddToCart = () => {
         if (user && user.email) {
-            const existingItem = cart.find(item => item.classId === _id);
-            if (existingItem) {
+            const existingCartItem = cart.find(item => item.classId === _id);
+            if (existingCartItem) {
                 toast.error(`${className} class has already added on the cart!`);
+                return;
+            }
+
+            const existingEnrolledItem = enrolledClass.find(item => item.classId === _id);
+            if (existingEnrolledItem) {
+                toast.error(`You have already enrolled to ${className} class!`);
                 return;
             }
 

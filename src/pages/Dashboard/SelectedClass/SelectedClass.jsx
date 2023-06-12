@@ -48,8 +48,8 @@ const SelectedClass = () => {
                 <div className="uppercase font-semibold h-[60px] flex justify-between items-center">
                     <h3 className="text-2xl">Total Items: {cart.length}</h3>
                     <h3 className="text-2xl">Total Price: ${total}</h3>
-                    <Link to="/dashboard/payment">
-                        <button className="btn btn-primary">PAY</button>
+                    <Link to="/dashboard/payment" className={`${cart.length === 0 ? "pointer-events-none" : ""}`}>
+                        <button className="btn btn-primary" disabled={cart.length === 0}>PAY</button>
                     </Link>
                 </div>
                 <div className="pb-8">
