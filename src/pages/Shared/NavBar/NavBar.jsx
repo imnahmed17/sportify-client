@@ -1,12 +1,15 @@
 import { Link, NavLink } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
 import { IoFlash } from 'react-icons/io5';
 import useAuth from '../../../hooks/useAuth';
+import useCart from '../../../hooks/useCart';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
 import './NavBar.css';
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
+    const [cart] = useCart();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
 
@@ -48,13 +51,20 @@ const NavBar = () => {
                             </NavLink>
                         </li>
                     ) : (
-                        <li>
-                            <NavLink to="/dashboard/selected-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
-                                Dashboard
-                            </NavLink>
-                        </li>
+                        <>
+                            <li>
+                                <NavLink to="/dashboard/selected-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/selected-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                                    <FaShoppingCart />
+                                    <div className="badge badge-secondary">+{cart?.length || 0}</div>
+                                </NavLink>
+                            </li>
+                        </>
                     )
-                    
                 )
             ) : (
                 <li>
