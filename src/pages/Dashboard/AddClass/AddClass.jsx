@@ -38,7 +38,6 @@ const AddClass = () => {
                     console.log(classData);
                     axiosSecure.post('/classes', classData)
                         .then(data => {
-                            console.log('after posting new class', data.data);
                             if (data.data.insertedId) {
                                 toast.success(`${classData.className} Class Added!`);
                                 setLoading(false);

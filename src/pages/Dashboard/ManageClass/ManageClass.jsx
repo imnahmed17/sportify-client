@@ -9,19 +9,17 @@ import toast from 'react-hot-toast';
 const ManageClass = () => {
     const [axiosSecure] = useAxiosSecure();
     const [singleClassData, setSingleClassData] = useState({});
-    const [temp, setTemp] = useState(0);
 
-    const { data: classes = [], refetch } = useQuery(['users'], async () => {
+    const { data: classes = [], refetch } = useQuery(['classes'], async () => {
         const res = await axiosSecure.get('/classes');
         return res.data;
     });
 
-    const handleApproved = (classData, feedback) => {
-        const document = { status: 'approved', feedback };
+    const handleApproved = classData => {
+        const document = { status: 'approved' };
 
-        axiosSecure.patch(`/classes/feedback/${classData._id}`, document)
+        axiosSecure.patch(`/classes/status/${classData._id}`, document)
             .then(data => {
-                console.log(data.data);
                 if (data.data.modifiedCount) {
                     refetch();
                     toast.success(`${classData.className} class is approved!`);
@@ -29,15 +27,25 @@ const ManageClass = () => {
             });
     };
 
-    const handleDenied = (classData, feedback) => {
-        const document = { status: 'denied', feedback };
+    const handleDenied = classData => {
+        const document = { status: 'denied' };
 
-        axiosSecure.patch(`/classes/feedback/${classData._id}`, document)
+        axiosSecure.patch(`/classes/status/${classData._id}`, document)
             .then(data => {
-                console.log(data.data);
                 if (data.data.modifiedCount) {
                     refetch();
                     toast.success(`${classData.className} class is denied!`);
+                }
+            });
+    };
+
+    const handleFeedback = (classData, feedback) => {
+        const document = { feedback: feedback };
+
+        axiosSecure.patch(`/classes/feedback/${classData._id}`, document)
+            .then(data => {
+                if (data.data.modifiedCount) {
+                    toast.success(`Feedback given to ${classData.instructorName}!`);
                 }
             });
     };
@@ -68,11 +76,7 @@ const ManageClass = () => {
                                         </th>
                                         <th scope="col" className="px-5 py-3 bg-indigo-800 border-b border-gray-200 text-white 
                                         text-left text-sm uppercase font-semibold">
-                                            Instructor Name
-                                        </th>
-                                        <th scope="col" className="px-5 py-3 bg-indigo-800 border-b border-gray-200 text-white 
-                                        text-left text-sm uppercase font-semibold">
-                                            Instructor Email
+                                            Instructor Information
                                         </th>
                                         <th scope="col" className="px-5 py-3 bg-indigo-800 border-b border-gray-200 text-white 
                                         text-left text-sm uppercase font-semibold">
@@ -98,17 +102,16 @@ const ManageClass = () => {
                                             key={classData._id}
                                             classData={classData}
                                             index={index} 
+                                            handleApproved={handleApproved}
+                                            handleDenied={handleDenied}
                                             setSingleClassData={setSingleClassData}
-                                            setTemp={setTemp}
                                         />)
                                     }
                                 </tbody>
                             </table>
                             <FeedbackModal 
                                 singleClassData={singleClassData}
-                                handleApproved={handleApproved} 
-                                handleDenied={handleDenied}
-                                temp={temp}
+                                handleFeedback={handleFeedback}
                             />
                         </div>
                     </div>

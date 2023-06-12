@@ -1,17 +1,8 @@
 import { FaBan } from "react-icons/fa";
 import { GoVerified } from "react-icons/go";
+import { RiFeedbackLine } from "react-icons/ri";
 
-const ClassDataRow = ({ classData, index, setSingleClassData, setTemp }) => {
-    const approved = () => {
-        setSingleClassData(classData);
-        setTemp(1);
-    };
-
-    const denied = () => {
-        setSingleClassData(classData);
-        setTemp(2);
-    };
-
+const ClassDataRow = ({ classData, index, handleApproved, handleDenied, setSingleClassData }) => {
     return (
         <tr>
             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -27,8 +18,6 @@ const ClassDataRow = ({ classData, index, setSingleClassData, setTemp }) => {
             </td>
             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 <p className="text-gray-900 whitespace-no-wrap">{classData?.instructorName}</p>
-            </td>
-            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 <p className="text-gray-900 whitespace-no-wrap">{classData?.instructorEmail}</p>
             </td>
             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -42,9 +31,14 @@ const ClassDataRow = ({ classData, index, setSingleClassData, setTemp }) => {
             </td>
             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 <div className="flex gap-2">
-                    <label htmlFor="my-modal-3" onClick={approved} className="btn bg-green-900 hover:bg-green-300" 
-                    disabled={classData?.status !== 'pending'}><GoVerified color="white" size={20} /></label>
-                    <label htmlFor="my-modal-3" onClick={denied} className="btn btn-error bg-red-600" disabled={classData?.status !== 'pending'}><FaBan color="white" size={20} /></label>
+                    <button onClick={() => handleApproved(classData)} className="btn bg-green-900 hover:bg-green-300" 
+                    disabled={classData?.status !== 'pending'}>
+                        <GoVerified color="white" size={20} />
+                    </button>
+                    <button onClick={() => handleDenied(classData)} className="btn btn-error bg-red-600" disabled={classData?.status !== 'pending'}>
+                        <FaBan color="white" size={20} />
+                    </button>
+                    <label htmlFor="my-modal-3" onClick={() => setSingleClassData(classData)} className="btn bg-indigo-600 hover:bg-indigo-400"><RiFeedbackLine color="white" size={20} /></label>
                 </div>
             </td>
         </tr>

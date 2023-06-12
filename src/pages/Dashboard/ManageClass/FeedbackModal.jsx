@@ -1,16 +1,11 @@
-const FeedbackModal = ({ singleClassData, handleApproved, handleDenied, temp }) => {
+const FeedbackModal = ({ singleClassData, handleFeedback }) => {
     const handleOnSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const feedback = form.feedback.value;
 
-        if (temp == 1) {
-            handleApproved(singleClassData, feedback);
-            form.reset();
-        } else {
-            handleDenied(singleClassData, feedback);
-            form.reset();
-        }
+        handleFeedback(singleClassData, feedback);
+        form.reset();
     };
     
     return (
