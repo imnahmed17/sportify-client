@@ -43,7 +43,6 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             console.log('current user', currentUser);
-            setLoading(false);
 
             // get and set token
             if (currentUser) {
@@ -52,11 +51,13 @@ const AuthProvider = ({ children }) => {
                 })
                     .then(data => {
                         localStorage.setItem('access-token', data.data.token);
+                        setLoading(false);
                     });
             }
             else {
                 localStorage.removeItem('access-token');
                 localStorage.removeItem('address');
+                setLoading(false);
             }
         });
         return () => {
