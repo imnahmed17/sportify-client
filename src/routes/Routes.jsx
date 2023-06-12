@@ -17,6 +17,7 @@ import ClassesPage from '../pages/ClassesPage/ClassesPage';
 import Payment from '../pages/Dashboard/Payment/Payment';
 import EnrolledClass from '../pages/Dashboard/EnrolledClass/EnrolledClass';
 import PaymentHistory from '../pages/Dashboard/PaymentHistory/PaymentHistory';
+import MyClass from '../pages/Dashboard/MyClass/MyClass';
 
 export const router = createBrowserRouter([
     {
@@ -73,7 +74,8 @@ export const router = createBrowserRouter([
                 element: <InstructorRoute><AddClass /></InstructorRoute>
             },
             {
-                path: 'my-class'
+                path: 'my-class',
+                element: <InstructorRoute><MyClass /></InstructorRoute>
             },
             // admin route
             {

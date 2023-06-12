@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { ImSpinner10 } from 'react-icons/im';
@@ -11,6 +12,7 @@ const AddClass = () => {
     const { register, handleSubmit, reset } = useForm();
     const [axiosSecure] = useAxiosSecure();
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const onSubmit = data => {
         const formData = new FormData();
@@ -41,6 +43,7 @@ const AddClass = () => {
                             if (data.data.insertedId) {
                                 toast.success(`${classData.className} Class Added!`);
                                 setLoading(false);
+                                navigate('/dashboard/my-class');
                                 reset();
                             }
                         });
