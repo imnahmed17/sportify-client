@@ -3,8 +3,8 @@ const PopularInsCard = ({ people }) => {
 
     return (
         <div className="card bg-base-100 shadow-xl group">
-            <figure className="">
-                <img src={image} alt="Shoes" className="w-full  group-hover:scale-125 transition" />
+            <figure>
+                <img src={image} alt="Shoes" className="w-full group-hover:scale-125 transition" />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">Instructor Name: {name}</h2>
