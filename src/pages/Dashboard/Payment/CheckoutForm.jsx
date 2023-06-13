@@ -28,14 +28,9 @@ const CheckoutForm = ({ cart, price }) => {
         event.preventDefault();
 
         if (!stripe || !elements) {
-            // Stripe.js has not loaded yet. Make sure to disable
-            // form submission until Stripe.js has loaded.
             return;
         }
 
-        // Get a reference to a mounted CardElement. Elements knows how
-        // to find your CardElement because there can only ever be one of
-        // each type of element.
         const card = elements.getElement(CardElement);
         if (card === null) {
             return;
@@ -88,8 +83,9 @@ const CheckoutForm = ({ cart, price }) => {
                 quantity: cart.length,
                 cartItems: cart.map(item => item._id),
                 classIds: cart.map(item => item.classId),
+                classNames: cart.map(item => item.className),
+                instructorIds: cart.map(item => item.instructorId),
                 status: 'service pending',
-                classNames: cart.map(item => item.className)
             };
 
             axiosSecure.post('/payments', payment)

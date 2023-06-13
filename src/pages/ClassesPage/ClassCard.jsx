@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
 const ClassCard = ({ classData }) => {
-    const { _id, image, className, instructorName, instructorEmail, availableSeats, price } = classData;
+    const { _id, image, className, instructorName, instructorId, instructorEmail, availableSeats, price } = classData;
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const [isAdmin] = useAdmin();
@@ -34,7 +34,7 @@ const ClassCard = ({ classData }) => {
                 return;
             }
 
-            const cartItem = { classId: _id, image, className, price, instructorEmail, email: user.email };
+            const cartItem = { classId: _id, image, className, price, instructorId, instructorEmail, email: user.email };
             axiosSecure.post('/carts', cartItem)
                 .then(data => {
                     if (data.data.insertedId) {
@@ -68,7 +68,7 @@ const ClassCard = ({ classData }) => {
                 <p>
                     <span className="font-medium">Instructor Name:</span> {instructorName} <br />
                     <span className="font-medium">Available Seats:</span> {availableSeats} <br />
-                    <span className="font-medium">Price:</span> {price}
+                    <span className="font-medium">Price:</span> ${price}
                 </p>
                 <div className="card-actions">
                     <button onClick={handleAddToCart} className="btn btn-primary" disabled={isAdmin || isInstructor || availableSeats === 0}>Select Class</button>

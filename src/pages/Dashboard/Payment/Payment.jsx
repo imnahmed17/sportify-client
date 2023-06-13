@@ -16,8 +16,6 @@ const Payment = () => {
             <Helmet>
                 <title>Sportify | Payments</title>
             </Helmet>
-            {/* <h3 className="text-3xl uppercase text-center">Payment</h3> */}
-            
             <div className="flex flex-col justify-center items-center h-[calc(100vh-40px)]">
                 <h3 className="text-3xl uppercase text-center">Payment</h3>
                 <Elements stripe={stripePromise}>

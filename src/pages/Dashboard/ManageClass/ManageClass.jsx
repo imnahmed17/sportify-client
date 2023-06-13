@@ -18,7 +18,7 @@ const ManageClass = () => {
     const handleApproved = classData => {
         const document = { status: 'approved' };
 
-        axiosSecure.patch(`/classes/status/${classData._id}`, document)
+        axiosSecure.patch(`/classes/approved/${classData._id}`, document)
             .then(data => {
                 if (data.data.modifiedCount) {
                     refetch();
@@ -30,7 +30,7 @@ const ManageClass = () => {
     const handleDenied = classData => {
         const document = { status: 'denied' };
 
-        axiosSecure.patch(`/classes/status/${classData._id}`, document)
+        axiosSecure.patch(`/classes/denied/${classData._id}`, document)
             .then(data => {
                 if (data.data.modifiedCount) {
                     refetch();
