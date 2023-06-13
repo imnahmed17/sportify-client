@@ -1,5 +1,6 @@
 const PopularCard = ({ classData }) => {
     const { image, className, instructorName, enrollCount, availableSeats, price } = classData;
+    
     return (
         <div className="card bg-base-100 shadow-xl group">
             <figure className="">
