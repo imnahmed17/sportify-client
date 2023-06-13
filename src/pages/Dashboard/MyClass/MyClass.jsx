@@ -1,17 +1,31 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import MyDataRow from './MyDataRow';
+import UpdateModal from './UpdateModal';
+import toast from 'react-hot-toast';
 
 const MyClass = () => {
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
+    const [singleClassData, setSingleClassData] = useState({});
 
-    const { data: classes = [] } = useQuery(['classes'], async () => {
+    const { data: classes = [], refetch } = useQuery(['classes'], async () => {
         const res = await axiosSecure.get(`/classes?email=${user?.email}`);
         return res.data;
     });
+
+    const handleUpdate = (item, updatedInfo) => {
+        axiosSecure.patch(`/classes/${item._id}`, updatedInfo)
+            .then(data => {
+                if (data.data.modifiedCount) {
+                    refetch();
+                    toast.success(`${item.className} class info updated!`);
+                }
+            });
+    };
 
     return (
         <>
@@ -70,10 +84,15 @@ const MyClass = () => {
                                             key={item._id}
                                             item={item}
                                             index={index} 
+                                            setSingleClassData={setSingleClassData}
                                         />)
                                     }
                                 </tbody>
                             </table>
+                            <UpdateModal 
+                                singleClassData={singleClassData} 
+                                handleUpdate={handleUpdate} 
+                            />
                         </div>
                     </div>
                 </div>

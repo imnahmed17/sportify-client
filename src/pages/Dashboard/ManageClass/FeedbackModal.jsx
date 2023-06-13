@@ -23,7 +23,7 @@ const FeedbackModal = ({ singleClassData, handleFeedback }) => {
                             <textarea name="feedback" className="textarea textarea-bordered h-24" required></textarea>
                         </div>
                         <div className="form-control mt-5">
-                            <input className="btn btn-primary" type="submit" value="Send Feedback" />
+                            <input onClick={() => document.getElementById('my-modal-3').checked = false} className="btn btn-primary" type="submit" value="Send Feedback" />
                         </div>
                     </form>
                 </div>

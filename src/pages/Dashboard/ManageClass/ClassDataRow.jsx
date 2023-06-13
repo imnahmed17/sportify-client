@@ -38,7 +38,9 @@ const ClassDataRow = ({ classData, index, handleApproved, handleDenied, setSingl
                     <button onClick={() => handleDenied(classData)} className="btn btn-error bg-red-600" disabled={classData?.status !== 'pending'}>
                         <FaBan color="white" size={20} />
                     </button>
-                    <label htmlFor="my-modal-3" onClick={() => setSingleClassData(classData)} className="btn bg-indigo-600 hover:bg-indigo-400"><RiFeedbackLine color="white" size={20} /></label>
+                    <label htmlFor="my-modal-3" onClick={() => setSingleClassData(classData)} className="btn bg-indigo-600 hover:bg-indigo-400">
+                        <RiFeedbackLine color="white" size={20} />
+                    </label>
                 </div>
             </td>
         </tr>

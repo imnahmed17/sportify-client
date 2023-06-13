@@ -1,4 +1,6 @@
-const MyDataRow = ({ item, index }) => {
+import { TiEdit } from "react-icons/ti";
+
+const MyDataRow = ({ item, index, setSingleClassData }) => {
     return (
         <tr>
             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -33,7 +35,15 @@ const MyDataRow = ({ item, index }) => {
                 <p className="text-gray-900 whitespace-no-wrap">{item?.enrollCount || 0}</p>
             </td>
             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p className="text-gray-900 whitespace-no-wrap">{item?.feedback}</p>
+                {
+                    item?.status !== 'pending' && item?.status !== 'approved' ? 
+                        <p className="text-gray-900 whitespace-no-wrap">{item?.feedback}</p> : null
+                }
+            </td>
+            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <label htmlFor="my-modal-1" onClick={() => setSingleClassData(item)} className="btn bg-indigo-600 hover:bg-indigo-400">
+                    <TiEdit color="white" size={20} />
+                </label>
             </td>
         </tr>
     );
