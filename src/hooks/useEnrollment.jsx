@@ -14,7 +14,8 @@ const useEnrollment = () => {
             }
             const res = await axiosSecure(`/enrolledClasses?email=${user?.email}`);
             return res.data;
-        }
+        },
+        retry: 3
     });
 
     return [enrolledClass, refetch];

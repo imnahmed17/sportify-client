@@ -9,7 +9,7 @@ const PopularCard = ({ classData }) => {
                 <img src={image} alt="Shoes" className="w-full h-52 group-hover:scale-125 transition" />
             </figure>
             <div className="card-body">
-                <Fade delay={1e3} cascade damping={1e-1} triggerOnce={true}>
+                <Fade cascade damping={1e-1} triggerOnce={true}>
                     <h2 className="card-title">Class Name: {className}</h2>
                     <p>
                         <span className="font-medium">Instructor Name:</span> {instructorName} <br />

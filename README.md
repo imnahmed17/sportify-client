@@ -7,18 +7,21 @@ Hosted in Firebase -> [Sportify Client](https://sportify-21225.web.app)
 Hosted in Vercel -> [Sportify Server](https://sportify-server.vercel.app)
 
 ## Features
-* navbar (website name, nav items, user image / login) (visible to all routes)
+* navbar (website name, nav items, user image / login, night or day mode icon) (visible to all routes except dashboard)
 * banner section
-* gallery section
-* sub category tabs
-* location section
-* in all toys page user can see all toys, and can search toys by their name 
-* in my toys page user can see all toys that he/she added, can update some toy information, and filter them by price.
-* user can also add toys in add a toy page
-* footer (visible to all routes)
-* from blog route people can see question answers 
+* popular classes section
+* popular instructors section
+* upcoming events section
+* testimonial section
+* in classes page user can see all approved classes, and can select any classes but he/she have to login first
+* in instructors page user can see all instructors
+* in this project we have 3 user panels (admin, instructor, and student)
+* admins have the power to make an user instructor or admin and approved or denied any classes added by the instructors with a feedback
+* instructors can add, and update his/her own classes
+* students can select their needy classes and after payment he/she will be enrolled to their selected classes
+* footer (visible to all routes except dashboard)
 * if any one try to render a wrong route error route will be appeared
-* every route is mobile and desktop responsive
+* every route is mobile and desktop responsive except the tables
 
 ## Resources & Credits
 Server GitHub Link -> [sportify-server](https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-imnahmed17/tree/main)

@@ -15,7 +15,8 @@ const useInstructor = () => {
             }
             const res = await axiosSecure.get(`/users/instructor/${user?.email}`);
             return res.data.instructor;
-        }
+        },
+        retry: 3
     });
 
     return [isInstructor, isInstructorLoading];
