@@ -10,6 +10,7 @@ const PopularInstructors = () => {
         const res = await axiosSecure.get('/instructors/popular');
         return res.data;
     });
+    
     return (
         <section>
             <SectionTitle title='Popular Instructors' />

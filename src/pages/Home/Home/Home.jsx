@@ -3,6 +3,7 @@ import Banner from '../Banner/Banner';
 import PopularClasses from '../PopularClasses/PopularClasses';
 import PopularInstructors from '../PopularInstructors/PopularInstructors';
 import UpcomingEvents from '../UpcomingEvents/UpcomingEvents';
+import Testimonial from '../Testimonial/Testimonial';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <PopularClasses />
             <PopularInstructors />
             <UpcomingEvents />
+            <Testimonial />
         </div>
     );
 };

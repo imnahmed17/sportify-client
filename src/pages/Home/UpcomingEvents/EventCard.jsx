@@ -7,7 +7,7 @@ const EventCard = ({ event }) => {
                 <p className="text-gray-700 text-base mb-4">{event.date}</p>
                 <p className="text-gray-700 text-base">{event.location}</p>
                 <div className="mt-6">
-                    <a href="#" className="text-indigo-500 font-semibold hover:text-indigo-600">
+                    <a href="" className="text-indigo-500 font-semibold hover:text-indigo-600">
                         Learn more &rarr;
                     </a>
                 </div>

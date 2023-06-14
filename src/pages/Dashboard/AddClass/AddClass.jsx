@@ -37,7 +37,7 @@ const AddClass = () => {
                         price: parseFloat(price),
                         status: 'pending'
                     };
-                    console.log(classData);
+                    
                     axiosSecure.post('/classes', classData)
                         .then(data => {
                             if (data.data.insertedId) {
