@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { Fade } from 'react-awesome-reveal';
 import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
 import useEnrollment from "../../hooks/useEnrollment";
@@ -59,18 +60,18 @@ const ClassCard = ({ classData }) => {
     };
 
     return (
-        <motion.div whileHover={{ scale: 1.03 }} className={`card ${availableSeats === 0 ? 'bg-red-500' : 'bg-base-100'} shadow-xl`}>
-            <figure className="px-10 pt-10">
-                <img src={image} alt="Shoes" className="rounded-xl" />
-            </figure>
+        <motion.div whileHover={{ scale: 1.03 }} className={`card ${availableSeats === 0 ? 'bg-red-500' : 'bg-base-100'} shadow-xl overflow-hidden`}>
+            <Fade cascade>
+                <figure>
+                    <img src={image} alt="" className="w-full h-60" />
+                </figure>
+            </Fade>
+            <p className="absolute top-4 right-4 px-4 bg-primary text-white rounded-xl">${price}</p>
             <div className="card-body ml-2">
-                <h2 className="card-title">Class Name: {className}</h2>
-                <p>
-                    <span className="font-medium">Instructor Name:</span> {instructorName} <br />
-                    <span className="font-medium">Available Seats:</span> {availableSeats} <br />
-                    <span className="font-medium">Price:</span> ${price}
-                </p>
-                <div className="card-actions">
+                <h3 className="tracking-widest text-sm title-font font-medium text-gray-400">Taken By:- {instructorName}</h3>
+                <h2 className="card-title">{className}</h2>
+                <p className="font-medium">Available Seats: {availableSeats}</p>
+                <div className="card-actions justify-end">
                     <button onClick={handleAddToCart} className="btn btn-primary" disabled={isAdmin || isInstructor || availableSeats === 0}>Select Class</button>
                 </div>
             </div>

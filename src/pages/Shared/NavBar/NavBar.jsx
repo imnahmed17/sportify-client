@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { Fade } from 'react-awesome-reveal';
 import { FaShoppingCart } from 'react-icons/fa';
 import { IoFlash } from 'react-icons/io5';
 import useAuth from '../../../hooks/useAuth';
@@ -106,10 +107,12 @@ const NavBar = () => {
                         {navOptions}
                     </ul>
                 </div>
-                <Link to="/" className="hover:bg-gray-100 btn btn-ghost normal-case text-2xl h-full">
-                    <IoFlash style={{ color: '#00BFFF' }} className='' size={50} />
-                    <p className="font-bold tracking-wide">Sportify</p>
-                </Link>
+                <Fade cascade direction="right">
+                    <Link to="/" className="hover:bg-gray-100 btn btn-ghost normal-case text-2xl h-full">
+                        <IoFlash className="hidden md:block" style={{ color: '#00BFFF' }} size={50} />
+                        <p className="font-bold tracking-wide">Sportify</p>
+                    </Link>
+                </Fade>
             </div>
             <div className="navbar-end gap-2">
                 <ul className="hidden lg:flex menu menu-horizontal px-1">

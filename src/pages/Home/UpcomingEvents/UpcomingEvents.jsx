@@ -14,7 +14,7 @@ const UpcomingEvents = () => {
     return (
         <section>
             <SectionTitle title="Upcoming Events" />
-            <section className="bg-base-200 pt-8 pb-12">
+            <div className="bg-base-200 pt-8 pb-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <p className="mt-4 max-w-2xl text-xl text-[#9747FF]">
                         Check out our list of upcoming sporting events in the New York City area.
@@ -28,7 +28,7 @@ const UpcomingEvents = () => {
                         }
                     </div>
                 </div>
-            </section>
+            </div>
         </section>
     );
 };

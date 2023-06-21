@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import { useQuery } from "@tanstack/react-query";
-import { makeAdmin, makeInstructor } from "../../../api/auth";
 import UserDataRow from "./UserDataRow";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
@@ -14,9 +13,9 @@ const ManageUser = () => {
     });
 
     const handleMakeAdmin = user => {
-        makeAdmin(user)
+        axiosSecure.patch(`/users/admin/${user._id}`)
             .then((data) => {
-                if (data.modifiedCount) {
+                if (data.data.modifiedCount) {
                     refetch();
                     toast.success(`${user.name} is an Admin Now!`);
                 }
@@ -28,9 +27,9 @@ const ManageUser = () => {
     };
 
     const handleMakeInstructor = user => {
-        makeInstructor(user)
+        axiosSecure.patch(`/users/instructor/${user._id}`)
             .then((data) => {
-                if (data.modifiedCount) {
+                if (data.data.modifiedCount) {
                     refetch();
                     toast.success(`${user.name} is an Instructor Now!`);
                 }

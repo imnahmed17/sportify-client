@@ -13,7 +13,7 @@ const InstructorCard = ({ instructor }) => {
     return (
         <motion.div whileHover={{ scale: 1.03 }} className="card bg-base-100 shadow-xl">
             <div className="px-10 pt-10">
-                <img src={instructor.image} alt="Shoes" className="rounded-xl" />
+                <img src={instructor.image} alt="Shoes" className="w-full rounded-xl" />
             </div>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{instructor.name}</h2>

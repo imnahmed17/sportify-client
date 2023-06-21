@@ -1,5 +1,7 @@
 # sportify-client
-A simple React app built with React & React Router Dom.
+![Sportify Logo](./public/favicon.png)
+
+Welcome to Sportify! A web application that allows student to book and attend sports classes on the summer camp vacation. This application aims to provide user-friendly experience for students, instructors, and administrators. This readme file provides an overview of this project and highlights its key features and technologies.
 
 ## Live Link
 Hosted in Firebase -> [Sportify Client](https://sportify-21225.web.app)
@@ -12,6 +14,7 @@ Hosted in Vercel -> [Sportify Server](https://sportify-server.vercel.app)
 * popular classes section
 * popular instructors section
 * upcoming events section
+* interesting facts section
 * testimonial section
 * in classes page user can see all approved classes, and can select any classes but he/she have to login first
 * in instructors page user can see all instructors
@@ -21,10 +24,11 @@ Hosted in Vercel -> [Sportify Server](https://sportify-server.vercel.app)
 * students can select their needy classes and after payment he/she will be enrolled to their selected classes
 * footer (visible to all routes except dashboard)
 * if any one try to render a wrong route error route will be appeared
+* jwt and axios interceptor has been implemented
 * every route is mobile and desktop responsive except the tables
 
 ## Resources & Credits
-Server GitHub Link -> [sportify-server](https://github.com/programming-hero-web-course1/b7a12-summer-camp-server_side-imnahmed17/tree/main)
+Server GitHub Link -> [sportify-server](https://github.com/imnahmed17/sportify-server)
 
 CSS Framework -> [tailwindcss](https://tailwindcss.com/docs/guides/vite)
 
