@@ -1,10 +1,14 @@
 import { Fade } from 'react-awesome-reveal';
 
-const PopularCard = ({ classData }) => {
+const PopularCard = ({ classData, aosDelay }) => {
     const { image, className, instructorName, enrollCount, availableSeats, price } = classData;
 
     return (
-        <div className="card bg-base-100 shadow-xl group">
+        <div 
+            data-aos="fade-up"
+            data-aos-delay={aosDelay}
+            className="card bg-base-100 shadow-md group"
+        >
             <figure>
                 <img src={image} alt="" className="w-full h-60 group-hover:scale-125 transition" />
             </figure>

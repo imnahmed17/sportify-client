@@ -1,6 +1,10 @@
-const EventCard = ({ event }) => {
+const EventCard = ({ event, aosDelay }) => {
     return (
-        <div className="bg-base-100 rounded-lg overflow-hidden shadow group">
+        <div 
+            data-aos="fade-up"
+            data-aos-delay={aosDelay}
+            className="bg-base-100 rounded-lg overflow-hidden shadow group"
+        >
             <figure className="overflow-hidden">
                 <img className="w-full h-52 object-cover group-hover:scale-125 transition" src={event.image} alt={event.title} />
             </figure>

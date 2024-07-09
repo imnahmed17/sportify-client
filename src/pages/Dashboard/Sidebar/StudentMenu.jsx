@@ -14,7 +14,7 @@ const StudentMenu = () => {
                 }
             >
                 <AiOutlineFileDone className="w-5 h-5" />
-                <span className="mx-4 font-medium">My Selected Classes</span>
+                <span className="mx-4 font-medium">Selected Classes</span>
             </NavLink>
             <NavLink
                 to="/dashboard/enrolled-class"
@@ -24,7 +24,7 @@ const StudentMenu = () => {
                 }
             >
                 <SiGoogleclassroom className="w-5 h-5" />
-                <span className="mx-4 font-medium">My Enrolled Classes</span>
+                <span className="mx-4 font-medium">Enrolled Classes</span>
             </NavLink>
             <NavLink
                 to="/dashboard/history"

@@ -60,7 +60,7 @@ const ClassCard = ({ classData }) => {
     };
 
     return (
-        <motion.div whileHover={{ scale: 1.03 }} className={`card ${availableSeats === 0 ? 'bg-red-500' : 'bg-base-100'} shadow-xl overflow-hidden`}>
+        <motion.div whileHover={{ scale: 1.03 }} className={`card ${availableSeats === 0 ? 'bg-red-500' : 'bg-base-100'} shadow-md overflow-hidden`}>
             <Fade cascade>
                 <figure>
                     <img src={image} alt="" className="w-full h-60" />

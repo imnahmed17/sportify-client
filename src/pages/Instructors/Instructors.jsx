@@ -23,7 +23,12 @@ const Instructors = () => {
             <div>
                 <img src={banner} className='w-full h-44' alt="" />
             </div>
-            <div className='mt-16 grid grid-cols-1 md:grid-cols-3 gap-10'>
+            <div className='mt-3 px-4 flex gap-3 font-medium'>
+                <p>Home</p>
+                <p className='text-gray-400'>/</p>
+                <p>Instructors</p>
+            </div>
+            <div className='mt-6 mb-16 px-4 grid grid-cols-1 md:grid-cols-4 gap-8'>
                 <Zoom cascade damping={0.1} triggerOnce={true}>
                     {
                         instructors.map(instructor => <InstructorCard 

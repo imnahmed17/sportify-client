@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
+import { Autoplay, EffectFade, Pagination } from "swiper";
 import "swiper/css";
+import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "./Banner.css";
 import baseball from "../../../assets/banner/baseball.png";
@@ -14,18 +15,20 @@ import tennis from "../../../assets/banner/tennis.png";
 import volleyball from "../../../assets/banner/volleyball.png";
 
 const Banner = () => {
-    const pagination = {
-        clickable: true,
-        renderBullet: function (index, className) {
-            return '<span class="' + className + '">' + (index + 1) + "</span>";
-        },
-    };
-    
     return (
         <>
             <Swiper 
-                pagination={pagination} 
-                modules={[Pagination]} 
+                spaceBetween={30}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                effect={'fade'}
+                pagination={{
+                    clickable: true,
+                }} 
+                modules={[Autoplay, EffectFade, Pagination]} 
                 className="mySwiper"
             >
                 <SwiperSlide>

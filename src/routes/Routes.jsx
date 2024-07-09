@@ -18,6 +18,7 @@ import Payment from '../pages/Dashboard/Payment/Payment';
 import EnrolledClass from '../pages/Dashboard/EnrolledClass/EnrolledClass';
 import PaymentHistory from '../pages/Dashboard/PaymentHistory/PaymentHistory';
 import MyClass from '../pages/Dashboard/MyClass/MyClass';
+import DashHome from '../pages/Dashboard/DashHome/DashHome';
 
 export const router = createBrowserRouter([
     {
@@ -51,6 +52,11 @@ export const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><DashboardLayout /></PrivateRoute>, 
         children: [
+            // common
+            {
+                index: true,
+                element: <DashHome />,
+            },
             // student 
             {
                 path: 'selected-class',

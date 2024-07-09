@@ -1,9 +1,12 @@
+import { IoIosMail } from 'react-icons/io';
 import { IoFlash } from 'react-icons/io5';
+import { FaMobileAlt } from 'react-icons/fa';
+import { FaLocationArrow } from 'react-icons/fa6';
 
 const Footer = () => {
     return (
-        <div>
-            <footer className="footer mt-20 p-10 bg-base-200 text-base-content">
+        <>
+            <footer className="footer p-10 bg-base-200 text-base-content">
                 <div>
                     <div>
                         <div className='md:flex justify-center'>
@@ -20,7 +23,7 @@ const Footer = () => {
                     <a className="link link-hover">Physical assessments</a> 
                     <a className="link link-hover">Nutrition and wellness</a>
                 </div> 
-                <div className='lg:hidden'>
+                <div>
                     <span className="footer-title">Company</span> 
                     <a className="link link-hover">About us</a> 
                     <a className="link link-hover">Jobs</a> 
@@ -28,17 +31,19 @@ const Footer = () => {
                     <a className="link link-hover">Developers</a>
                 </div> 
                 <div>
-                    <span className="footer-title">Social Media</span> 
-                    <a className="link link-hover">Facebook</a> 
-                    <a className="link link-hover">Twitter</a> 
-                    <a className="link link-hover">Instagram</a>
-                    <a className="link link-hover">LinkedIn</a>
-                </div> 
-                <div>
-                    <span className="footer-title">Contact Us</span> 
-                    <a className="link link-hover">123 South Lane, East Berne</a> 
-                    <a className="link link-hover">555-555-5555</a>
-                    <a className="link link-hover">info@sportify.com</a>
+                    <span className="footer-title">Address</span> 
+                    <div className='flex items-center gap-3'>
+                        <FaLocationArrow className='mt-0.5' />
+                        <a className="link link-hover">South Lane, East Berne</a> 
+                    </div>
+                    <div className='flex items-center gap-3'>
+                        <FaMobileAlt className='mt-0.5' />
+                        <a className="link link-hover">+880 1234567890</a>
+                    </div>
+                    <div className='flex items-center gap-3'>
+                        <IoIosMail className='mt-1' />
+                        <a className="link link-hover">info@sportify.com</a>
+                    </div>
                 </div>
                 <div className='md:hidden lg:block'>
                     <span className="footer-title">Newsletter</span> 
@@ -58,7 +63,7 @@ const Footer = () => {
                     <p>Copyright © 2023 - All right reserved by Sportify Ltd</p>
                 </div>
             </footer>
-        </div>
+        </>
     );
 };
 

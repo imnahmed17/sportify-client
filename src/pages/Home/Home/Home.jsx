@@ -6,6 +6,8 @@ import PopularInstructors from '../PopularInstructors/PopularInstructors';
 import UpcomingEvents from '../UpcomingEvents/UpcomingEvents';
 import Testimonial from '../Testimonial/Testimonial';
 import InterestingFacts from '../InterestingFacts/InterestingFacts';
+import Partners from '../Partners/Partners';
+import University from '../University/University';
 
 const Home = () => {
     const { scrollYProgress } = useScroll();
@@ -17,10 +19,12 @@ const Home = () => {
             </Helmet>
             <Banner />
             <PopularClasses />
+            <University />
             <PopularInstructors />
             <UpcomingEvents />
             <InterestingFacts />
             <Testimonial />
+            <Partners />
             <motion.div 
                 className='progress-bar' 
                 style={{ 

@@ -1,7 +1,7 @@
 const SectionTitle = ({ title }) => {
     return (
-        <div className='w-full h-28 flex justify-center items-center bg-[#5D6B89]'>
-            <h2 className='text-white text-4xl md:text-5xl font-medium'>{title}</h2>
+        <div className='w-full h-36 flex justify-center items-center'>
+            <h1 className='text-4xl md:text-5xl font-bold'>{title}</h1>
         </div>
     );
 };

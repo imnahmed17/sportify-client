@@ -1,6 +1,10 @@
-const TestimonialCard = ({ name, title, photo, message }) => {
+const TestimonialCard = ({ name, title, photo, message, aosDelay }) => {
     return (
-        <div className="bg-base-100 overflow-hidden shadow rounded-lg">
+        <div 
+            data-aos="fade-up"
+            data-aos-delay={aosDelay}
+            className="bg-base-100 overflow-hidden shadow-md rounded-lg"
+        >
             <div className="px-4 py-5 sm:p-6">
                 <div className="flex-shrink-0">
                     <img className="h-12 w-12 rounded-full" src={photo} alt={name} />

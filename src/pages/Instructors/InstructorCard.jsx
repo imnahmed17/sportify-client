@@ -11,18 +11,15 @@ const InstructorCard = ({ instructor }) => {
     });
 
     return (
-        <motion.div whileHover={{ scale: 1.03 }} className="card bg-base-100 shadow-xl">
-            <div className="px-10 pt-10">
-                <img src={instructor.image} alt="Shoes" className="w-full rounded-xl" />
-            </div>
-            <div className="card-body items-center text-center">
+        <motion.div whileHover={{ scale: 1.03 }} className="card bg-base-100 shadow-md">
+            <figure>
+                <img src={instructor.image} alt="Shoes" className="w-full" />
+            </figure>
+            <div className="card-body items-center">
                 <h2 className="card-title">{instructor.name}</h2>
                 <p>{instructor.email}</p>
                 <p>No. of class take: {instructorInfo[0]?.count || 0}</p>
                 <p>Class names: {instructorInfo[0]?.classes.join(', ')}</p>
-                <div className="card-actions">
-                    <button className="btn btn-primary">See Classes</button>
-                </div>
             </div>
         </motion.div>
     );
