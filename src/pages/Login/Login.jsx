@@ -100,6 +100,14 @@ const Login = () => {
                     </p>
                 </div>
             </div>
+            <div className="bg-indigo-50 p-4 w-fit absolute top-80 right-36">
+                <p className="text-gray-500 text-sm">
+                    Admin: asm.mahim@gmail.com <br />
+                    Instructor: kamrun.nahar@gmail.com <br />
+                    Student: raju.ahmed@gmail.com <br />
+                    Password: #@Sportify123@#
+                </p>
+            </div>
         </>
     );
 };

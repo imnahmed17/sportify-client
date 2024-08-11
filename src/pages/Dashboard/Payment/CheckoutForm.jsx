@@ -100,7 +100,7 @@ const CheckoutForm = ({ cart, price }) => {
 
     return (
         <>
-            <form className="w-2/3 m-8" onSubmit={handleSubmit}>
+            <form className="w-fit my-8 flex items-center gap-4" onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {
@@ -117,7 +117,7 @@ const CheckoutForm = ({ cart, price }) => {
                         }
                     }}
                 />
-                <button className="btn btn-primary btn-sm mt-2" type="submit" disabled={!stripe || !clientSecret || processing}>
+                <button className="btn btn-primary btn-sm" type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>

@@ -35,7 +35,8 @@ const Home = () => {
                     left: 0,
                     height: 5,
                     background: 'blue',
-                    transformOrigin: '0%' 
+                    transformOrigin: '0%',
+                    zIndex: 20 
                 }}
             />
         </>

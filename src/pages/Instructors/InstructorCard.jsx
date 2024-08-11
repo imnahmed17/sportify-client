@@ -19,7 +19,8 @@ const InstructorCard = ({ instructor }) => {
                 <h2 className="card-title">{instructor.name}</h2>
                 <p>{instructor.email}</p>
                 <p>No. of class take: {instructorInfo[0]?.count || 0}</p>
-                <p>Class names: {instructorInfo[0]?.classes.join(', ')}</p>
+                <span>Classes:</span>
+                <p className="h-6">{instructorInfo[0]?.classes.join(', ')}</p>
             </div>
         </motion.div>
     );

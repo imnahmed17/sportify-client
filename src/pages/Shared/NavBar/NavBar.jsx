@@ -73,7 +73,7 @@ const NavBar = () => {
                     ) : (
                         <>
                             <li>
-                                <NavLink to="/dashboard/selected-class" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                                <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : 'default')}>
                                     Dashboard
                                 </NavLink>
                             </li>
@@ -109,7 +109,7 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <Fade cascade direction="right">
-                        <Link to="/" className="hover:bg-gray-100 btn btn-ghost normal-case text-2xl h-full">
+                        <Link to="/" className="hover:bg-base-100 btn btn-ghost normal-case text-2xl h-full">
                             <IoFlash className="hidden md:block" style={{ color: '#00BFFF' }} size={50} />
                             <p className="font-bold tracking-wide">Sportify</p>
                         </Link>

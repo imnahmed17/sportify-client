@@ -56,6 +56,7 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <DashHome />,
+                loader: () => fetch('https://sportify-server.vercel.app/totalPayments')
             },
             // student 
             {

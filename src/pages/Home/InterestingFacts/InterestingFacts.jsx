@@ -21,7 +21,7 @@ const InterestingFacts = () => {
         <section>
             <SectionTitle title="Interesting Facts" />
             <div className="mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-                <div className="bg-base-100 rounded-lg shadow">
+                <div className="bg-base-100 md:w-3/4 mx-auto rounded-lg shadow">
                     <div className="card-body">
                         {
                             facts.length > 0 ? <>

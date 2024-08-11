@@ -34,9 +34,9 @@ const MyDataRow = ({ item, index, setSingleClassData }) => {
             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
                 <p className="text-gray-900 whitespace-no-wrap">{item?.enrollCount || 0}</p>
             </td>
-            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
                 {
-                    item?.status !== 'pending' && item?.status !== 'approved' ? 
+                    (item?.status !== 'pending' && item?.status === 'approved') ? 
                         <p className="text-gray-900 whitespace-no-wrap">{item?.feedback}</p> : null
                 }
             </td>

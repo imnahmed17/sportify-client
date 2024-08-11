@@ -3,9 +3,12 @@ import { useQuery } from '@tanstack/react-query';
 import Statistics from './Statistics';
 import BarChart from './BarChart';
 import AreaChart from './AreaChart';
+import PurchaseHistory from './PurchaseHistory';
+import { useLoaderData } from 'react-router-dom';
 
 const DashHome = () => {
     const [axiosSecure] = useAxiosSecure();
+    const { totalPayments } = useLoaderData();
 
     const { data: stats = [] } = useQuery(['dashboard-stats'], async () => {
         const res = await axiosSecure.get('/dashboard-stats');
@@ -29,6 +32,11 @@ const DashHome = () => {
                     </div>
                     <div className='w-full py-2 shadow rounded-md'>
                         <AreaChart data={chartData} />
+                    </div>
+                </div>
+                <div className='mt-6 flex flex-col-reverse md:flex-row gap-6'>
+                    <div className='w-full shadow rounded-md'>
+                        <PurchaseHistory totalPayments={totalPayments} />
                     </div>
                 </div>
             </div>

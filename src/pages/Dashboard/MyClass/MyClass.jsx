@@ -73,7 +73,7 @@ const MyClass = () => {
                                             Feedback
                                         </th>
                                         <th scope="col" className="px-5 py-3 bg-indigo-800 border-b border-gray-200 text-white 
-                                        text-center text-sm uppercase font-semibold">
+                                        text-left text-sm uppercase font-semibold">
                                             Action
                                         </th>
                                     </tr>
